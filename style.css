@@ -230,3 +230,74 @@ p {
   0%, 50% { opacity: 1; }
   50.01%, 100% { opacity: 0; }
 }
+
+/* === Mobile Responsive Adjustments === */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.8rem; /* smaller heading on mobile */
+  }
+
+  p {
+    font-size: 1rem;
+  }
+
+  .gif {
+    max-width: 200px; /* smaller gifs */
+  }
+
+  .btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .button-row {
+    flex-direction: column; /* stack buttons vertically */
+    gap: 0.8rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr; /* stack grid items */
+  }
+
+  .grid-btn img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .gallery img {
+    max-width: 140px;
+  }
+
+  .flower-box img {
+    max-width: 200px;
+  }
+
+  .letter {
+    font-size: 1rem;
+    padding: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  p {
+    font-size: 0.9rem;
+  }
+
+  .gif {
+    max-width: 160px;
+  }
+
+  .btn {
+    font-size: 0.85rem;
+    padding: 0.5rem 0.8rem;
+  }
+
+  .grid-btn img {
+    width: 80px;
+    height: 80px;
+  }
+}
