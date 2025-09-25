@@ -301,3 +301,52 @@ p {
     height: 80px;
   }
 }
+
+.lock-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #ffe6f0;
+  text-align: center;
+  padding: 1rem;
+}
+
+.lock-container input {
+  padding: 0.6rem;
+  font-size: 1.2rem;
+  text-align: center;
+  margin: 0.5rem 0;
+  border: 2px solid #ff3399;
+  border-radius: 12px;
+  outline: none;
+}
+
+.lock-container button {
+  margin-top: 0.5rem;
+}
+
+.error {
+  color: red;
+  margin-top: 0.5rem;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Lock + Main fade handling */
+#lock-screen, #main-content {
+  opacity: 1;
+  transition: opacity 0.8s ease;
+}
+
+.hidden {
+  display: none;
+}
+
+.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}

@@ -94,9 +94,52 @@ document.addEventListener("DOMContentLoaded", () => {
       if (i < text.length) {
         letter.textContent += text.charAt(i);
         i++;
-        setTimeout(typeWriter, 75); // typing speed (ms)
+        setTimeout(typeWriter, 50); // typing speed (ms)
       }
     }
     typeWriter();
+  }
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const pinInput = document.getElementById("pin-input");
+  const pinSubmit = document.getElementById("pin-submit");
+  const errorMessage = document.getElementById("error-message");
+  const lockScreen = document.getElementById("lock-screen");
+  const mainContent = document.getElementById("main-content");
+
+  // Check if already unlocked before
+  if (localStorage.getItem("unlocked") === "true") {
+    lockScreen.classList.add("hidden");
+    mainContent.classList.remove("hidden");
+  }
+
+  function unlock() {
+    if (pinInput.value === "1610") {
+      // Save unlocked state
+      localStorage.setItem("unlocked", "true");
+
+      // Fade out lock screen
+      lockScreen.classList.add("fade-out");
+
+      setTimeout(() => {
+        lockScreen.classList.add("hidden");
+        mainContent.classList.remove("hidden");
+        mainContent.style.opacity = 0; // start hidden
+        setTimeout(() => {
+          mainContent.style.opacity = 1; // fade in
+        }, 50);
+      }, 800);
+    } else {
+      errorMessage.textContent = "Oops! Try again, my Carrott 💖";
+      pinInput.value = "";
+    }
+  }
+
+  if (pinSubmit) {
+    pinSubmit.addEventListener("click", unlock);
+    pinInput.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") unlock();
+    });
   }
 });

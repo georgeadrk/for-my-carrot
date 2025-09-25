@@ -1,22 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Happy Birthday!</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body class="fade-in">
-  <div id="overlay"></div>
-  <canvas id="hearts"></canvas>
-  <div class="container center">
-    <img src="assets/cat-dancing.gif" alt="Dancing Cat" class="gif">
-    <h1>Haiaiaiaiii My Carrott!</h1>
-    <p>Do you want to see your gift?</p>
-    <div class="button-row">
-      <a href="surprise.html" class="btn">Yes, please</a>
-      <a href="no.html" class="btn secondary">No thanks</a>
+
+  <!-- 🔒 Lock Screen -->
+  <div id="lock-screen" class="lock-container">
+    <h2>Enter myy Carrot's bdayyy!! (ddmm)</h2>
+    <input type="password" id="pin-input" maxlength="4" placeholder="****">
+    <button id="pin-submit" class="btn">Unlock</button>
+    <p id="error-message" class="error"></p>
+  </div>
+
+  <!-- 🎁 Main Content (hidden until PIN is correct) -->
+  <div id="main-content" class="hidden">
+    <div id="overlay"></div>
+    <canvas id="hearts"></canvas>
+    <div class="container center">
+      <img src="assets/cat-dancing.gif" alt="Dancing Cat" class="gif">
+      <h1>Haiaiaiaiii My Carrott!</h1>
+      <p>Do you want to see your gift?</p>
+      <div class="button-row">
+        <a href="surprise.html" class="btn">Yes, please</a>
+        <a href="no.html" class="btn secondary">No thanks</a>
+      </div>
     </div>
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>
