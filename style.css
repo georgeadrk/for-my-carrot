@@ -108,24 +108,143 @@ p {
 }
 
 /* === Gallery === */
+/* Gallery */
+/* Scattered gallery layout */
+/* Gallery container */
 .gallery {
   display: flex;
-  gap: 1rem;
-  justify-content: center;
   flex-wrap: wrap;
-  margin-bottom: 2rem;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;   /* scrapbook style */
 }
 
+/* Natural proportions */
 .gallery img {
+  width: auto;
+  height: auto;
+  max-height: 250px;      
   max-width: 200px;
-  border: 3px solid #ff66b2;
   border-radius: 12px;
-  transition: transform 0.3s ease;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  object-fit: contain;
 }
 
+/* Hover: straighten, zoom, and glow */
 .gallery img:hover {
-  transform: scale(1.05) rotate(1deg);
+  transform: rotate(0deg) scale(1.1) !important;
+  z-index: 10;
+  box-shadow: 0 8px 25px rgba(255, 105, 180, 0.7), 0 0 20px rgba(255, 182, 193, 0.8);
 }
+
+/* Scattered scrapbook effect */
+.gallery img:nth-child(3n) { transform: rotate(-4deg); }
+.gallery img:nth-child(4n) { transform: rotate(3deg); }
+.gallery img:nth-child(5n) { transform: rotate(-6deg); }
+.gallery img:nth-child(7n) { transform: rotate(2deg); }
+
+/* Lightbox */
+/* Lightbox overlay */
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 192, 203, 0.9); /* pastel pink tint */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.lightbox.hidden {
+  display: none;
+}
+
+/* The image */
+.lightbox img {
+  max-width: 90%;
+  max-height: 80%;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Close button */
+.lightbox .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 40px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s;
+}
+
+.lightbox .close:hover {
+  transform: scale(1.2);
+}
+
+/* Navigation buttons */
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.8);
+  border: none;
+  font-size: 40px;
+  font-weight: bold;
+  color: #ff69b4; /* bright pink arrows */
+  cursor: pointer;
+  padding: 12px 18px;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s, transform 0.2s;
+}
+
+.nav-btn:hover {
+  background: white;
+  transform: scale(1.15);
+}
+
+/* Positioning left/right buttons */
+#prev {
+  left: 30px;
+}
+
+#next {
+  right: 30px;
+}
+
+/* Mobile friendly */
+@media (max-width: 768px) {
+  .lightbox img {
+    max-width: 95%;
+    max-height: 70%;
+  }
+
+  .nav-btn {
+    font-size: 28px;
+    padding: 8px 12px;
+  }
+
+  .lightbox .close {
+    font-size: 32px;
+    top: 15px;
+    right: 20px;
+  }
+}
+
+/* Hidden class (used to hide lightbox) */
+.hidden {
+  display: none;
+}
+
 
 /* === Flower Box === */
 .flower-box {
@@ -349,4 +468,24 @@ p {
 .fade-out {
   opacity: 0;
   pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .gallery img {
+    max-width: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery img {
+    max-width: 90px;
+  }
+}
+
+.footer-text {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 1.2rem;
+  color: #ff69b4;  /* soft pink */
+  font-style: italic;
 }

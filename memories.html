@@ -8,15 +8,144 @@
 <body class="fade-in">
   <div id="overlay"></div>
   <canvas id="hearts"></canvas>
+
   <div class="container">
     <h1>Captured Memories</h1>
     <div class="gallery">
-      <img src="assets/memory1.jpg" alt="">
-      <img src="assets/memory2.jpg" alt="">
-      <img src="assets/memory3.jpg" alt="">
+      <!-- 65 images -->
+      <!-- I’ll just list them in order -->
+      <img src="assets/memory1.jpg" alt="Memory 1">
+      <img src="assets/memory2.jpg" alt="Memory 2">
+      <img src="assets/memory3.jpg" alt="Memory 3">
+      <img src="assets/memory4.jpg" alt="Memory 4">
+      <img src="assets/memory5.jpg" alt="Memory 5">
+      <img src="assets/memory6.jpg" alt="Memory 6">
+      <img src="assets/memory7.jpg" alt="Memory 7">
+      <img src="assets/memory8.jpg" alt="Memory 8">
+      <img src="assets/memory9.jpg" alt="Memory 9">
+      <img src="assets/memory10.jpg" alt="Memory 10">
+      <img src="assets/memory11.jpg" alt="Memory 11">
+      <img src="assets/memory12.jpg" alt="Memory 12">
+      <img src="assets/memory13.jpg" alt="Memory 13">
+      <img src="assets/memory14.jpg" alt="Memory 14">
+      <img src="assets/memory15.jpg" alt="Memory 15">
+      <img src="assets/memory16.jpg" alt="Memory 16">
+      <img src="assets/memory17.jpg" alt="Memory 17">
+      <img src="assets/memory18.jpg" alt="Memory 18">
+      <img src="assets/memory19.jpg" alt="Memory 19">
+      <img src="assets/memory20.jpg" alt="Memory 20">
+      <img src="assets/memory21.jpg" alt="Memory 21">
+      <img src="assets/memory22.jpg" alt="Memory 22">
+      <img src="assets/memory23.jpg" alt="Memory 23">
+      <img src="assets/memory24.jpg" alt="Memory 24">
+      <img src="assets/memory25.jpg" alt="Memory 25">
+      <img src="assets/memory26.jpg" alt="Memory 26">
+      <img src="assets/memory27.jpg" alt="Memory 27">
+      <img src="assets/memory28.jpg" alt="Memory 28">
+      <img src="assets/memory29.jpg" alt="Memory 29">
+      <img src="assets/memory30.jpg" alt="Memory 30">
+      <img src="assets/memory31.jpg" alt="Memory 31">
+      <img src="assets/memory32.jpg" alt="Memory 32">
+      <img src="assets/memory33.jpg" alt="Memory 33">
+      <img src="assets/memory34.jpg" alt="Memory 34">
+      <img src="assets/memory35.jpg" alt="Memory 35">
+      <img src="assets/memory36.jpg" alt="Memory 36">
+      <img src="assets/memory37.jpg" alt="Memory 37">
+      <img src="assets/memory38.jpg" alt="Memory 38">
+      <img src="assets/memory39.jpg" alt="Memory 39">
+      <img src="assets/memory40.jpg" alt="Memory 40">
+      <img src="assets/memory41.jpg" alt="Memory 41">
+      <img src="assets/memory42.jpg" alt="Memory 42">
+      <img src="assets/memory43.jpg" alt="Memory 43">
+      <img src="assets/memory44.jpg" alt="Memory 44">
+      <img src="assets/memory45.jpg" alt="Memory 45">
+      <img src="assets/memory46.jpg" alt="Memory 46">
+      <img src="assets/memory47.jpg" alt="Memory 47">
+      <img src="assets/memory48.jpg" alt="Memory 48">
+      <img src="assets/memory49.jpg" alt="Memory 49">
+      <img src="assets/memory50.jpg" alt="Memory 50">
+      <img src="assets/memory51.jpg" alt="Memory 51">
+      <img src="assets/memory52.jpg" alt="Memory 52">
+      <img src="assets/memory53.jpg" alt="Memory 53">
+      <img src="assets/memory54.jpg" alt="Memory 54">
+      <img src="assets/memory55.jpg" alt="Memory 55">
+      <img src="assets/memory56.jpg" alt="Memory 56">
+      <img src="assets/memory57.jpg" alt="Memory 57">
+      <img src="assets/memory58.jpg" alt="Memory 58">
+      <img src="assets/memory59.jpg" alt="Memory 59">
+      <img src="assets/memory60.jpg" alt="Memory 60">
+      <img src="assets/memory61.jpg" alt="Memory 61">
+      <img src="assets/memory62.jpg" alt="Memory 62">
+      <img src="assets/memory63.jpg" alt="Memory 63">
+      <img src="assets/memory64.jpg" alt="Memory 64">
+      <img src="assets/memory65.jpg" alt="Memory 65">
     </div>
+    <br>
+    <p class="footer-text">And many more to come my lovee 💖</p>
     <a href="surprise.html" class="btn">Back</a>
   </div>
+
+  <!-- Lightbox with navigation -->
+  <div id="lightbox" class="lightbox hidden">
+    <span class="close">&times;</span>
+    <img id="lightbox-img" src="" alt="Expanded Memory">
+    <button id="prev" class="nav-btn">&#10094;</button>
+    <button id="next" class="nav-btn">&#10095;</button>
+  </div>
+
   <script src="script.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const images = [...document.querySelectorAll(".gallery img")];
+      const lightbox = document.getElementById("lightbox");
+      const lightboxImg = document.getElementById("lightbox-img");
+      const closeBtn = document.querySelector(".lightbox .close");
+      const prevBtn = document.getElementById("prev");
+      const nextBtn = document.getElementById("next");
+      let currentIndex = 0;
+
+      function showImage(index) {
+        currentIndex = index;
+        lightboxImg.src = images[currentIndex].src;
+        lightbox.classList.remove("hidden");
+      }
+
+      images.forEach((img, index) => {
+        img.addEventListener("click", () => showImage(index));
+      });
+
+      closeBtn.addEventListener("click", () => {
+        lightbox.classList.add("hidden");
+        lightboxImg.src = "";
+      });
+
+      prevBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        showImage(currentIndex);
+      });
+
+      nextBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        currentIndex = (currentIndex + 1) % images.length;
+        showImage(currentIndex);
+      });
+
+      lightbox.addEventListener("click", (e) => {
+        if (e.target === lightbox) {
+          lightbox.classList.add("hidden");
+          lightboxImg.src = "";
+        }
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (!lightbox.classList.contains("hidden")) {
+          if (e.key === "ArrowRight") nextBtn.click();
+          if (e.key === "ArrowLeft") prevBtn.click();
+          if (e.key === "Escape") closeBtn.click();
+        }
+      });
+    });
+  </script>
 </body>
 </html>
